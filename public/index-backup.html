@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BeautyCita - Premium on-demand beauty services with professional stylists. Book hair, makeup, and nail services at your location.">
+    <meta name="keywords" content="beauty services, mobile stylist, hair salon, makeup artist, nail technician, booking app">
+    <title>BeautyCita - Beautiful You, Anywhere</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23ff69b4'/><text x='50' y='58' text-anchor='middle' font-size='40' fill='white'>💄</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/themes.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/booking.css">
+    <link rel="stylesheet" href="/css/components.css">
+</head>
+<body>
+    <!-- Theme Selector Slide-out -->
+    <div id="themeSelector" class="theme-selector">
+        <div class="theme-header">
+            <h3>Choose Theme</h3>
+            <button class="close-theme-btn" onclick="BeautyCita.toggleThemeSelector()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="theme-options">
+            <div class="theme-option" data-theme="light">
+                <div class="theme-preview light-preview"></div>
+                <span>Light</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+                <div class="theme-preview dark-preview"></div>
+                <span>Dark</span>
+            </div>
+            <div class="theme-option" data-theme="black">
+                <div class="theme-preview black-preview"></div>
+                <span>Black</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="/images/logo.svg" alt="BeautyCita" class="logo-img">
+                <span class="logo-text">BeautyCita</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#stylists" class="nav-link">Stylists</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" onclick="BeautyCita.toggleThemeSelector()">
+                    <i class="fas fa-palette"></i>
+                </button>
+                <button class="auth-btn login-btn" onclick="BeautyCita.showLogin()">Login</button>
+                <button class="auth-btn signup-btn" onclick="BeautyCita.showSignup()">Sign Up</button>
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <div class="user-avatar" onclick="BeautyCita.toggleUserMenu()">
+                        <img id="userAvatar" src="/images/default-avatar.png" alt="User">
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="#profile" onclick="BeautyCita.showProfile()">Profile</a>
+                        <a href="#bookings" onclick="BeautyCita.showBookings()">My Bookings</a>
+                        <a href="#settings" onclick="BeautyCita.showSettings()">Settings</a>
+                        <hr>
+                        <a href="#logout" onclick="BeautyCita.logout()">Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" onclick="BeautyCita.toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#home" class="mobile-nav-link">Home</a>
+            <a href="#services" class="mobile-nav-link">Services</a>
+            <a href="#stylists" class="mobile-nav-link">Stylists</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <hr>
+            <div class="mobile-auth-buttons">
+                <button class="auth-btn login-btn" onclick="BeautyCita.showLogin()">Login</button>
+                <button class="auth-btn signup-btn" onclick="BeautyCita.showSignup()">Sign Up</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-background">
+                <div class="hero-particles"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-text animate-on-scroll">
+                    <h1 class="hero-title">
+                        Beautiful You, 
+                        <span class="gradient-text">Anywhere</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Premium beauty services delivered to your doorstep by certified professionals. 
+                        Experience luxury beauty care in the comfort of your own space.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="cta-button primary" onclick="BeautyCita.startBooking()">
+                            <span>Book Now</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="cta-button secondary" onclick="BeautyCita.scrollTo('#services')">
+                            <span>Explore Services</span>
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual animate-on-scroll">
+                    <div class="hero-card floating">
+                        <div class="booking-preview">
+                            <div class="service-icon">
+                                <i class="fas fa-cut"></i>
+                            </div>
+                            <div class="service-info">
+                                <h3>Hair Styling</h3>
+                                <p>Professional stylist arriving in 30 minutes</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Categories Section -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2>Our Services</h2>
+                    <p>Choose from our wide range of professional beauty services</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card animate-on-scroll" data-category="hair">
+                        <div class="service-icon-wrapper">
+                            <i class="fas fa-cut service-icon"></i>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <h3>Hair Services</h3>
+                        <p>Cuts, styling, coloring, treatments</p>
+                        <ul class="service-list">
+                            <li>Haircuts & Styling</li>
+                            <li>Hair Coloring</li>
+                            <li>Blowout & Treatments</li>
+                            <li>Special Event Styling</li>
+                        </ul>
+                        <button class="service-cta" onclick="BeautyCita.selectServiceCategory('hair')">
+                            <span>Book Hair Service</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="service-card animate-on-scroll" data-category="makeup">
+                        <div class="service-icon-wrapper">
+                            <i class="fas fa-palette service-icon"></i>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <h3>Makeup Services</h3>
+                        <p>Professional makeup for any occasion</p>
+                        <ul class="service-list">
+                            <li>Everyday Makeup</li>
+                            <li>Special Event Makeup</li>
+                            <li>Bridal Makeup</li>
+                            <li>Editorial & Fashion</li>
+                        </ul>
+                        <button class="service-cta" onclick="BeautyCita.selectServiceCategory('makeup')">
+                            <span>Book Makeup Service</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="service-card animate-on-scroll" data-category="nails">
+                        <div class="service-icon-wrapper">
+                            <i class="fas fa-hand-sparkles service-icon"></i>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <h3>Nail Services</h3>
+                        <p>Complete nail care and artistry</p>
+                        <ul class="service-list">
+                            <li>Manicures & Pedicures</li>
+                            <li>Gel & Acrylic Nails</li>
+                            <li>Nail Art & Design</li>
+                            <li>Nail Health Treatments</li>
+                        </ul>
+                        <button class="service-cta" onclick="BeautyCita.selectServiceCategory('nails')">
+                            <span>Book Nail Service</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="service-card animate-on-scroll" data-category="skincare">
+                        <div class="service-icon-wrapper">
+                            <i class="fas fa-spa service-icon"></i>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <h3>Skincare Services</h3>
+                        <p>Rejuvenating facial treatments</p>
+                        <ul class="service-list">
+                            <li>Facial Treatments</li>
+                            <li>Deep Cleansing</li>
+                            <li>Anti-aging Treatments</li>
+                            <li>Custom Skincare</li>
+                        </ul>
+                        <button class="service-cta" onclick="BeautyCita.selectServiceCategory('skincare')">
+                            <span>Book Skincare Service</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Stylists Section -->
+        <section id="stylists" class="stylists-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2>Featured Stylists</h2>
+                    <p>Meet our top-rated professionals</p>
+                </div>
+                
+                <div class="stylists-grid" id="featuredStylists">
+                    <!-- Dynamic content loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2>How It Works</h2>
+                    <p>Simple steps to book your perfect beauty service</p>
+                </div>
+                
+                <div class="steps-container">
+                    <div class="step animate-on-scroll" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Choose Your Service</h3>
+                            <p>Select from hair, makeup, nails, or skincare services</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step animate-on-scroll" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Pick Date & Time</h3>
+                            <p>Choose your preferred appointment time with flexible scheduling</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step animate-on-scroll" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Find Your Stylist</h3>
+                            <p>Get matched with top-rated professionals in your area</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step animate-on-scroll" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Enjoy Your Service</h3>
+                            <p>Relax while your stylist provides premium beauty care</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content booking-modal-content">
+            <div class="booking-header">
+                <h2 id="bookingTitle">Book Your Service</h2>
+                <button class="close-btn" onclick="BeautyCita.closeBookingModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Booking Progress -->
+            <div class="booking-progress">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <span>Service</span>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <span>Date & Time</span>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <span>Stylist</span>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-circle">4</div>
+                    <span>Confirm</span>
+                </div>
+            </div>
+
+            <!-- Booking Steps -->
+            <div id="bookingSteps" class="booking-steps">
+                <!-- Step content loaded dynamically -->
+            </div>
+            
+            <!-- Booking Actions -->
+            <div class="booking-actions">
+                <button id="bookingBackBtn" class="btn secondary" onclick="BeautyCita.previousBookingStep()" style="display: none;">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button id="bookingNextBtn" class="btn primary" onclick="BeautyCita.nextBookingStep()">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modals -->
+    <div id="authModal" class="modal">
+        <div class="modal-content auth-modal-content">
+            <div class="auth-header">
+                <h2 id="authTitle">Welcome Back</h2>
+                <button class="close-btn" onclick="BeautyCita.closeAuthModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="authContent">
+                <!-- Auth content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointment Tracking Modal -->
+    <div id="trackingModal" class="modal">
+        <div class="modal-content tracking-modal-content">
+            <div class="tracking-header">
+                <h2>Track Your Appointment</h2>
+                <button class="close-btn" onclick="BeautyCita.closeTrackingModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="tracking-content">
+                <div id="trackingMap" class="tracking-map"></div>
+                <div class="tracking-info">
+                    <div class="stylist-info" id="stylistInfo">
+                        <!-- Stylist info loaded dynamically -->
+                    </div>
+                    <div class="appointment-status" id="appointmentStatus">
+                        <!-- Status info loaded dynamically -->
+                    </div>
+                    <div class="eta-info" id="etaInfo">
+                        <!-- ETA info loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="modal">
+        <div class="modal-content chat-modal-content">
+            <div class="chat-header">
+                <div class="chat-user-info">
+                    <img id="chatUserAvatar" src="" alt="Stylist">
+                    <div>
+                        <h3 id="chatUserName">Stylist</h3>
+                        <span id="chatUserStatus">Online</span>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="BeautyCita.closeChatModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages loaded dynamically -->
+            </div>
+            
+            <div class="chat-input-container">
+                <div class="privacy-notice">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Private chat - sharing personal info is prohibited</span>
+                </div>
+                <div class="chat-input-wrapper">
+                    <input type="text" id="chatInput" placeholder="Type your message...">
+                    <button class="send-btn" onclick="BeautyCita.sendChatMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications -->
+    <div id="notifications" class="notifications-container">
+        <!-- Notifications appear here -->
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p id="loadingText">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places,geometry"></script>
+    <script src="https://js.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/themes.js"></script>
+    <script src="/js/animations.js"></script>
+    <script src="/js/booking.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/maps.js"></script>
+    <script src="/js/chat.js"></script>
+    <script src="/js/notifications.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
